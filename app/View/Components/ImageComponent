@@ -22,16 +22,9 @@ class ImageComponent extends Component
 
     public function render()
     {
-        return view('components.image');  // Wskaż widok Blade
+        return view('components.image');
     }
 
-    /**
-     * Przygotowuje dane dla komponentu obrazów.
-     *
-     * @param int $imageId ID załącznika WordPress.
-     * @param array $breakpoints Lista breakpointów (rozmiary obrazów WordPress).
-     * @return array Tablica danych dla <picture>.
-     */
     public function prepareImageData($imageId, $breakpoints): array
     {
         $imageUrl = wp_get_attachment_url($imageId);
