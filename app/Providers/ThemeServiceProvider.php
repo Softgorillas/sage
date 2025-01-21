@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Roots\Acorn\Sage\SageServiceProvider;
+use App\Services\SupportWebp;
 
 class ThemeServiceProvider extends SageServiceProvider
 {
@@ -14,6 +15,10 @@ class ThemeServiceProvider extends SageServiceProvider
     public function register()
     {
         parent::register();
+
+        $this->app->singleton(SupportWebp::class, function ($app) {
+            return new SupportWebp();
+        });
     }
 
     /**
@@ -24,5 +29,6 @@ class ThemeServiceProvider extends SageServiceProvider
     public function boot()
     {
         parent::boot();
+        $this->app->make(SupportWebp::class);
     }
 }

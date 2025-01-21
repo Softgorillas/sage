@@ -21,3 +21,6 @@
 @section('sidebar')
   @include('sections.sidebar')
 @endsection
+
+<x-image :imageId=14>
+</x-imaget>
