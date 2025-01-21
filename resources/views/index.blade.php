@@ -15,8 +15,6 @@
   @endwhile
 
   {!! get_the_posts_navigation() !!}
-
-  <x-image-webp :imageId=16 :breakpoints="['1', '768', '991']" :sizes="['thumbnail', 'medium', 'large']" :eagerLoading=false></x-image-webp>
 @endsection
 
 
