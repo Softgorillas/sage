@@ -56,8 +56,14 @@ class ImageWebp extends Component
      */
     public string $alt;
 
+    /**
+     * Media alt text.
+     *
+     * @var string
+     */
+    public string $svg = '';
 
-     /**
+    /**
      * Default Breakpoints
      *
      * @var array
@@ -71,7 +77,7 @@ class ImageWebp extends Component
         1536,
     ];
 
-     /**
+    /**
      * Default sizes
      *
      * @var array
@@ -147,7 +153,7 @@ class ImageWebp extends Component
     /**
      * Get array of url images.
      *
-     * @param int $id id attachment.
+     * @param int $imageId id attachment.
      * @param array $sizes array sizes.
      * @param array $breakpoints array brakpoints.
      * @return array
@@ -165,6 +171,10 @@ class ImageWebp extends Component
         }
 
         if (!array_key_exists('sizes', $metadata) || empty($metadata['sizes'])) {
+            if (get_post_mime_type($imageId) === 'image/svg+xml') {
+                $this->svg = wp_get_attachment_image_url($imageId);
+            }
+
             return [];
         }
 
