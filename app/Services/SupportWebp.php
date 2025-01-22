@@ -35,6 +35,7 @@ class SupportWebp
             try {
                 $this->generateAllSizes($attachmentID);
             } catch (Exception $e) {
+                error_log($e->getMessage());
             }
 
             $metadata['webp'] = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $filePath);

@@ -56,13 +56,42 @@ class ImageWebp extends Component
      */
     public string $alt;
 
+
+     /**
+     * Default Breakpoints
+     *
+     * @var array
+     */
+    protected $defaultBreakpoints = [
+        1,
+        640,
+        768,
+        1024,
+        1280,
+        1536,
+    ];
+
+     /**
+     * Default sizes
+     *
+     * @var array
+     */
+    protected $defaultSizes = [
+        'medium',
+        'medium',
+        'large',
+        'large',
+        'large',
+        'large',
+    ];
+
     public function __construct(int $imageId = null, array $breakpoints = [], array $sizes = [], bool $eagerLoading = false, string $alt = '')
     {
         $this->imageId = $imageId;
 
         if ($this->imageId) {
-            $this->breakpoints = $breakpoints;
-            $this->sizes = $sizes;
+            $this->breakpoints = $breakpoints ?: $this->defaultBreakpoints;
+            $this->sizes = $sizes ?: $this->defaultSizes;
             $this->eagerLoading = $eagerLoading ? true : false;
             $this->alt = $alt ?: get_post_meta($this->imageId, '_wp_attachment_image_alt', true);
             $this->uploadDir = wp_upload_dir();
@@ -130,7 +159,6 @@ class ImageWebp extends Component
         }
 
         $metadata = wp_get_attachment_metadata($imageId);
-
 
         if (empty($metadata)) {
             return [];
