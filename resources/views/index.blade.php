@@ -15,10 +15,7 @@
   @endwhile
 
   {!! get_the_posts_navigation() !!}
-  <x-image-webp :imageId=18 :breakpoints="['1', '768', '991']" :sizes="['thumbnail', 'medium', 'large']" :eagerLoading=true></x-image-webp>
-  <x-image-webp :imageId=17 :breakpoints="['1', '768', '991']" :sizes="['thumbnail', 'medium', 'large']" :eagerLoading=true></x-image-webp>
 @endsection
-
 
 @section('sidebar')
   @include('sections.sidebar')
