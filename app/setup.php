@@ -164,3 +164,10 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+/**
+ * Register custom upload MIME type filters.
+ *
+ * Adds support for additional MIME types, such as SVG.
+ */
+add_filter('upload_mimes', ['\App\Filters\UploadMimes', 'allowSvg']);
