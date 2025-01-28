@@ -46,7 +46,7 @@ class Post extends Composer
                 return get_the_title($home);
             }
 
-            return __('Latest Posts', 'sage');
+            return __('Latest Posts', 'gorilla');
         }
 
         if (is_archive()) {
@@ -56,13 +56,13 @@ class Post extends Composer
         if (is_search()) {
             return sprintf(
                 /* translators: %s is replaced with the search query */
-                __('Search Results for %s', 'sage'),
+                __('Search Results for %s', 'gorilla'),
                 get_search_query()
             );
         }
 
         if (is_404()) {
-            return __('Not Found', 'sage');
+            return __('Not Found', 'gorilla');
         }
 
         return get_the_title();
@@ -77,7 +77,7 @@ class Post extends Composer
     {
         return wp_link_pages([
             'echo' => 0,
-            'before' => '<p>'.__('Pages:', 'sage'),
+            'before' => '<p>'.__('Pages:', 'gorilla'),
             'after' => '</p>',
         ]);
     }
