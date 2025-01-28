@@ -1,11 +1,30 @@
-<header class="banner">
-  <a class="brand" href="{{ home_url('/') }}">
-    {!! $siteName !!}
-  </a>
+<header class="flex items-start justify-between">
+    <a href="{{ home_url('/') }}" aria-label="{{ __('Home', 'gorilla') }}">
+        {!! $siteName !!}
+    </a>
 
-  @if (has_nav_menu('primary_navigation'))
-    <nav class="nav-primary" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
-      {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav', 'echo' => false]) !!}
-    </nav>
-  @endif
+    @if ($header_navigation->isNotEmpty())
+        <nav aria-label="{{ __('Primary Navigation', 'gorilla') }}">
+            <ul class="flex items-center space-x-4">
+                @foreach ($header_navigation->all() as $item)
+                    <li class="{{ $item->classes }} {{ $item->active ? 'current-item' : '' }}">
+                        <a href="{{ $item->url }}">
+                            {{ $item->label }}
+                        </a>
+                        @if ($item->children)
+                            <ul>
+                                @foreach ($item->children as $child)
+                                    <li class="{{ $child->classes }}{{ $child->active ? ' current-item' : '' }}">
+                                        <a href="{{ $child->url }}">
+                                            {{ $child->label }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
+        </nav>
+    @endif
 </header>
