@@ -8,6 +8,7 @@ import {
 import tailwindConfig from './tailwind.config.js';
 
 export default defineConfig({
+  base: '/app/themes/sage/public/build/',
   plugins: [
     laravel({
       input: [
