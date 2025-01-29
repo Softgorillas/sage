@@ -40,6 +40,7 @@
   },
   "require": {
     "php": ">=8.2",
+    "log1x/navi": "^3.1",
     "roots/acorn": "v5.0.0-beta.2"
   },
   "require-dev": {

@@ -4,7 +4,7 @@
 
   @if (! have_posts())
     <x-alert type="warning">
-      {!! __('Sorry, no results were found.', 'sage') !!}
+      {!! __('Sorry, no results were found.', 'gorilla') !!}
     </x-alert>
 
     {!! get_search_form(false) !!}
@@ -15,8 +15,4 @@
   @endwhile
 
   {!! get_the_posts_navigation() !!}
-@endsection
-
-@section('sidebar')
-  @include('sections.sidebar')
 @endsection
